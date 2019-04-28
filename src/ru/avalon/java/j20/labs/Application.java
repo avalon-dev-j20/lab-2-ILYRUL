@@ -37,6 +37,10 @@ public class Application {
          * порядок и/или закомментировать любой из элементов
          * массива.
          */
+        try{
         for (Task task : tasks) task.run();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
     }
 }

@@ -2,7 +2,7 @@ package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -36,6 +36,13 @@ public class Task4 implements Task {
      * @return новый экземпляр типа {@link Properties}
      */
     private Properties read(String path) {
-        throw new UnsupportedOperationException("Not implement yet!");
+        Properties prop = new Properties();
+        try (InputStream stream =  Properties.class.getResourceAsStream(path);){
+           if (stream != null)
+               prop.load(stream);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return prop;
     }
 }
